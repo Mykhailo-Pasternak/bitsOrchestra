@@ -1,0 +1,23 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "name": "roy",
+      "price": "123$"
+    },
+    {
+      "id": 2,
+      "name": "sam",
+      "price": "321$"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "date": "5.5.2022",
+      "name": "roy",
+      "email": "123$",
+      "comment": "lorem"
+    }
+  ]
+}

@@ -1,7 +1,14 @@
 import React from "react";
+import ProductList from "./components/ProductList/ProductList";
+import Reviews from "./components/Reviews/Reviews";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App: React.FC = () => {
+  return (
+    <div>
+      <ProductList />
+      <Reviews />
+    </div>
+  );
+};
 
 export default App;
