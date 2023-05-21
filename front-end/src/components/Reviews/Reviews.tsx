@@ -1,94 +1,10 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import { useForm } from "react-hook-form";
-
-// type ReviewType = {
-//   id: number;
-//   date: string;
-//   name: string;
-//   email: string;
-//   comment: string;
-// };
-// type FormInput = {
-//   name: string;
-//   email: string;
-//   comment: string;
-// };
-
-// const Reviews: React.FC = () => {
-//   const [reviews, setReviews] = useState<ReviewType[]>([]);
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//     reset,
-//   } = useForm<FormInput>();
-
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:3000/reviews")
-//       .then((response) => setReviews(response.data));
-//   }, []);
-
-//   const onSubmit = (data: FormInput) => {
-//     axios
-//       .post("http://localhost:3000/reviews", {
-//         ...data,
-//         id: Math.random(),
-//         date: new Date().toISOString().split("T")[0],
-//       })
-//       .then((response) => {
-//         setReviews((prevReviews) => [...prevReviews, response.data]);
-//         reset();
-//       });
-//   };
-
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit(onSubmit)}>
-//         <input
-//           name="name"
-//           ref={register({ required: true })}
-//           placeholder="Name"
-//         />
-//         {errors.name && <p>This field is required</p>}
-
-//         <input
-//           name="email"
-//           ref={register({ required: true })}
-//           placeholder="Email"
-//         />
-//         {errors.email && <p>This field is required</p>}
-
-//         <textarea
-//           name="comment"
-//           ref={register({ required: true })}
-//           placeholder="Comment"
-//         />
-//         {errors.comment && <p>This field is required</p>}
-
-//         <button type="submit">Submit</button>
-//       </form>
-
-//       {reviews.map((review) => (
-//         <div key={review.id}>
-//           <h2>{review.name}</h2>
-//           <p>{review.comment}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Reviews;
-
-// src/components/Reviews/Reviews.tsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Form, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 type ReviewType = {
   id: number;
@@ -141,9 +57,17 @@ const Reviews: React.FC = () => {
   };
 
   return (
-    <div>
+    <Container>
+      {reviews.map((review) => (
+        <div key={review.id}>
+          <h2>{review.name}</h2>
+          <p>{review.comment}</p>
+        </div>
+      ))}
+      <br />
+
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group controlId="formName">
+        <Form.Group className="mb-3" controlId="formName">
           <Form.Label>Name</Form.Label>
           <Controller
             name="name"
@@ -156,7 +80,7 @@ const Reviews: React.FC = () => {
           {errors.name && <p>{errors.name.message}</p>}
         </Form.Group>
 
-        <Form.Group controlId="formEmail">
+        <Form.Group className="mb-3" controlId="formEmail">
           <Form.Label>Email address</Form.Label>
           <Controller
             name="email"
@@ -169,7 +93,7 @@ const Reviews: React.FC = () => {
           {errors.email && <p>{errors.email.message}</p>}
         </Form.Group>
 
-        <Form.Group controlId="formComment">
+        <Form.Group className="mb-3" controlId="formComment">
           <Form.Label>Comment</Form.Label>
           <Controller
             name="comment"
@@ -187,18 +111,15 @@ const Reviews: React.FC = () => {
           {errors.comment && <p>{errors.comment.message}</p>}
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" label="Save information about me." />
+        </Form.Group>
+
+        <Button variant="secondary" type="submit">
           Submit
         </Button>
       </Form>
-
-      {reviews.map((review) => (
-        <div key={review.id}>
-          <h2>{review.name}</h2>
-          <p>{review.comment}</p>
-        </div>
-      ))}
-    </div>
+    </Container>
   );
 };
 

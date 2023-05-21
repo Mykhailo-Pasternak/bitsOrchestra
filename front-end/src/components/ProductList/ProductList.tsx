@@ -1,59 +1,39 @@
-import React, { useEffect, useState } from "react";
-import mockData from "../../mockTool/productList.json";
-import axios from "axios";
+import React from "react";
+import HeaderSection from "../HeaderSection/HeaderSection";
+import { Container, Row, Col } from "react-bootstrap";
+import ProductCard from "../ProductCard/ProductCard";
 
-type ProductType = {
+export type ProductType = {
   id: number;
   name: string;
   price: string;
+  src: string;
 };
 
-// const ProductList: React.FC = () => {
-//   const [data, setData] = useState<ProductType | null>(null);
+type ProductListProps = {
+  products: ProductType[];
+};
 
-//   useEffect(() => {
-//     // Replace 'data' with the specific endpoint your component needs to fetch data from
-//     fetch("http://localhost:3000/users")
-//       .then((response) => response.json())
-//       .then((data) => setData(data));
-//   }, []);
-
-//   if (!data) {
-//     return <div>Loading...</div>;
-//   }
-//   console.log(data);
-//   return (
-//     <div>
-//       {/* Use your data here. For example: */}
-//       {/* <h1>{mockData.title}</h1>
-//       <p>{data.description}</p> */}
-
-//       <h1>asdada</h1>
-//     </div>
-//   );
-// };
-// export default ProductList;
-
-// src/components/ProductList/ProductList.tsx
-
-const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<ProductType[]>([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/product")
-      .then((response) => setProducts(response.data));
-  }, []);
-
+const ProductList: React.FC<ProductListProps> = ({ products }) => {
   return (
-    <div>
-      {products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.name}</h2>
-          <p>{product.price}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <HeaderSection />
+
+      <Container className="py-3">
+        <Row>
+          {products.map((product) => (
+            <Col key={product.id} xs={12} sm={6} md={3} lg={3} className="mb-4">
+              <ProductCard
+                id={product.id}
+                name={product.name}
+                price={product.price}
+                src={product.src}
+              />
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
   );
 };
 

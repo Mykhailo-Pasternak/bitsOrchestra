@@ -1,0 +1,18 @@
+
+[
+    {
+      "id": 1,
+      "date": "5.5.2022",
+      "name": "John",
+      "email": "john@example.com",
+      "comment": "This is a great product!"
+    },
+    {
+      "id": 2,
+      "date": "6.5.2022",
+      "name": "Jane",
+      "email": "jane@example.com",
+      "comment": "I loved this product!"
+    }
+  ]
+  

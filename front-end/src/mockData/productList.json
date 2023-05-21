@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": "123$",
+      "src": "https://holz.ua/media/catalog/product/cache/13/image/650x850/9df78eab33525d08d6e5fb8d27136e95/7/1/7103.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": "321$",
+      "src": "https://holz.ua/media/catalog/product/cache/13/image/650x850/9df78eab33525d08d6e5fb8d27136e95/7/1/7103.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "price": "221$",
+      "src": "https://holz.ua/media/catalog/product/cache/13/image/650x850/9df78eab33525d08d6e5fb8d27136e95/7/1/7103.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "price": "441$",
+      "src": "https://holz.ua/media/catalog/product/cache/13/image/650x850/9df78eab33525d08d6e5fb8d27136e95/7/1/7103.jpg"
+    }
+  ]
